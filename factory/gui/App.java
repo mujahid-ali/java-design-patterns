@@ -1,15 +1,30 @@
 
-public class App{
-  private final static Dialog dialog;
 
-  public App(Dialog dialog){
-    dialog = new WindowsDialog();
-  }
+//import Dialog.*;
+//import WebDialog.*;
+//import WindowsDialog.*;
+
+public class App{
+  private static Dialog dialog;
 
   public static void main(String[] args){
-    //var app = new App(new Dialog());
-    //app.WindowsDialog();
-    dialog.render();
+    configure();
+    runBusinessLogic();
 
+    //var app = new App(new WindowsDialog());
+    //app.createButton();
+    //dialog.render();
+  }
+
+  static void configure(){
+    if(System.getProperty("os.name").equals("Windows 10")){
+      dialog = new WindowsDialog();
+    }else{
+      dialog = new WebDialog();
+    }
+  }
+
+  static void runBusinessLogic(){
+    dialog.renderWindow();
   }
 }

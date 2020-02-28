@@ -9,7 +9,7 @@ public class App{
 
   public static void main(String[] args){
     configure();
-    runBusinessLogic();
+
 
     //var app = new App(new WindowsDialog());
     //app.createButton();
@@ -17,10 +17,25 @@ public class App{
   }
 
   static void configure(){
+    /*
     if(System.getProperty("os.name").equals("Windows 10")){
       dialog = new WindowsDialog();
     }else{
       dialog = new WebDialog();
+    }
+    */
+    for(int i =0; i<=6; i++){
+      if(i % 2 == 0){
+        dialog = new WindowsDialog();
+        runBusinessLogic();
+      }if(i % 3 == 0){
+        dialog = new MacDialog();
+        runBusinessLogic();
+      }
+      else{
+        dialog = new WebDialog();
+        runBusinessLogic();
+      }
     }
   }
 
